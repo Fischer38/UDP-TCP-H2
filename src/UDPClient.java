@@ -12,12 +12,11 @@ public class UDPClient {
             Scanner scanner = new Scanner(System.in);
 
             System.out.print("Skriv besked: ");
-            String besked = scanner.nextLine();
-            byte[] sendData = besked.getBytes();
+            byte[] besked = scanner.nextLine().getBytes();
             byte[] receiveData = new byte[1024];
 
             // Send besked til serveren
-            DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, serverAddress, serverPort);
+            DatagramPacket sendPacket = new DatagramPacket(besked, besked.length, serverAddress, serverPort);
             clientSocket.send(sendPacket);
 
             // Modtag serverens svar
